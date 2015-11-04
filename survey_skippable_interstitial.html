@@ -135,10 +135,13 @@ else {
 <script type="text/javascript">
 var adsController;
 var href = '';
-var guid = s4() + s4() + '-' + s4() + '-' + s4();
+var guid;
+var startTime;
 
 window.onload = function() {
-  document.location.hash = '#id=' + guid;
+  guid =  = s4() + s4() + '-' + s4() + '-' + s4();
+  startTime = new Date().getTime();
+  document.location.hash = '#id=' + guid + '&st=' + startTime;
 }
 
 function showVideoInterstitial(event) {
@@ -165,7 +168,7 @@ function onAdLoaded() {
 
 function onDone() {
   document.body.style.overflow='auto';
-  document.location.href = href+'#id='+guid;
+  document.location.href = href+'?id='+guid + '&st=' + startTime;
 }
 
 function s4() {
