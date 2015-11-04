@@ -136,10 +136,13 @@ else {
                        ? decodeURIComponent(keyValuePair[1])
                        : '';
       if (key == 'id') {
-      	participantId = value;
+      	participationId = value;
       } else if (key == 'st') {
       	var timeSpent = new Date().getTime() - value;
       	var date = new Date(timeSpent);
+      	console.log(date.getUTCMinutes());
+      	console.log(date.getUTCHours());
+      	console.log(date.getUTCSeconds());
       	if (date.getUTCHours() > 0) {
       		str += date.getUTCHours() + ' hours ';
       	}
