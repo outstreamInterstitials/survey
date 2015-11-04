@@ -126,26 +126,25 @@ function getParameterByName(name) {
         results = regex.exec('http://outstreaminterstitials.github.io/survey/survey_page2.html?id=7a9ef073-e525-d60c&st=1446654688132');
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
+ function msToTime(duration) {
+        var milliseconds = parseInt((duration%1000)/100)
+            , seconds = parseInt((duration/1000)%60)
+            , minutes = parseInt((duration/(1000*60))%60)
+            , hours = parseInt((duration/(1000*60*60))%24);
+
+        hours = (hours < 10) ? "0" + hours : hours;
+        minutes = (minutes < 10) ? "0" + minutes : minutes;
+        seconds = (seconds < 10) ? "0" + seconds : seconds;
+
+        return hours + ":" + minutes + ":" + seconds + "." + milliseconds;
+    }
+
 
 	function showSurvey() {
 	var participationId = getParameterByName('id');
 	var startTime = getParameterByName('st');
-	var str;
-	var timeSpent = new Date().getTime() - startTime;
-	var date = new Date(timeSpent);
-	console.log(date.getUTCMinutes());
-	console.log(date.getUTCHours());
-	console.log(date.getUTCSeconds());
-	if (date.getUTCHours() > 0) {
-	      str += date.getUTCHours() + ' hours ';
-	}
-	if (date.getUTCMinutes() > 0) {
-	      str += date.getUTCMinutes() + ' minutes ';
-	}
-	if (date.getUTCSeconds() > 0) {
-	      str += date.getUTCSeconds() + ' seconds ';
-	}
-	document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId + '&.entry.880967945=' + str; 
+	var timeSpent = msToTime(new Date().getTime() - startTime);
+	document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId + '&.entry.880967945=' + timeSpent; 
 	}
 </script>
 </body>
