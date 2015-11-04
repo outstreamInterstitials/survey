@@ -127,7 +127,6 @@ function getParameterByName(name) {
     return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
 }
  function msToTime(duration) {
- 	console.log(duration);
         var milliseconds = parseInt((duration%1000)/100)
             , seconds = parseInt((duration/1000)%60)
             , minutes = parseInt((duration/(1000*60))%60)
@@ -144,10 +143,8 @@ function getParameterByName(name) {
 	function showSurvey() {
 	var participationId = getParameterByName('id');
 	var startTime = getParameterByName('st');
-	console.log(startTime);
 	var timeSpent = msToTime(new Date().getTime() - startTime);
-	console.log(timeSpent);
-	//document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId + '&.entry.880967945=' + timeSpent; 
+	document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId + '&entry.1500992668=' + timeSpent; 
 	}
 </script>
 </body>
