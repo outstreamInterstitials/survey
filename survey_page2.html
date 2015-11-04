@@ -120,11 +120,11 @@ else {
 <script type="text/javascript">
   function printId() {
     var hash = document.location.hash;
-    var re = new RegExp('id=(\\w)+(&)?');
+    var re = new RegExp(/id=(.*)/);
     var match = re.exec(hash);
     var participationId = 'undefined';
-    if (match && match[0] && match[0] != '') {
-      participationId = match[0];
+    if (match && match[1] && match[1] != '') {
+      participationId = match[1];
     }
     document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId;
   }
