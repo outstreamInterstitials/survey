@@ -119,26 +119,19 @@ else {
 </div>
 </div>
 <script type="text/javascript">
-  function showSurvey() {
-    var participationId;
-    var str;
-    var queryString = document.location.hash.replace(/\+/g, ' ');
-    // split the query string around ampersands and semicolons
-    var queryComponents = queryString.split(/[&;]/g);
-    var params = {};
-    // loop over the query string components
-    for (var index = 0; index < queryComponents.length; index ++){
 
-      // extract this component's key-value pair
-      var keyValuePair = queryComponents[index].split('=');
-      var key          = decodeURIComponent(keyValuePair[0]);
-      var value        = keyValuePair.length > 1
-                       ? decodeURIComponent(keyValuePair[1])
-                       : '';
-      if (key == 'id') {
-      	participationId = value;
-      } else if (key == 'st') {
-      	var timeSpent = new Date().getTime() - value;
+function getParameterByName(name) {
+    name = name.replace(/[\[]/, "\\[").replace(/[\]]/, "\\]");
+    var regex = new RegExp("[\\?&]" + name + "=([^&#]*)"),
+        results = regex.exec('http://outstreaminterstitials.github.io/survey/survey_page2.html?id=7a9ef073-e525-d60c&st=1446654688132');
+    return results === null ? "" : decodeURIComponent(results[1].replace(/\+/g, " "));
+}
+
+  function showSurvey() {
+    var participationId = getParameterByName('id');
+    var startTime = getParameterByName('st');
+    var str;
+      	var timeSpent = new Date().getTime() - startTime;
       	var date = new Date(timeSpent);
       	console.log(date.getUTCMinutes());
       	console.log(date.getUTCHours());
