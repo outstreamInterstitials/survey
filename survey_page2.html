@@ -111,8 +111,23 @@ else {
 						<p class='page_stats'>Thanks to all authors for creating a page that has been read 357,994 times.</p>
 			</div><!--end section-->
 </div>
+<div class="done_section" style="padding-top:40px;text-align:center">
+  <button id="done" onclick="printId()">I'm Done</button>
+</div>
 
 </div>
 </div>
-		</body>
-		</html>
+<script type="text/javascript">
+  function printId() {
+    var hash = document.location.hash;
+    var re = new RegExp('id=(\\w)+(&)?');
+    var match = re.exec(hash);
+    var participationId = 'undefined';
+    if (match && match[0] && match[0] != '') {
+      participationId = match[0];
+    }
+    document.location.href = 'https://docs.google.com/forms/d/13zn3Cs2WOcyNTpGVnTQppv3iYaAzF4NxEZy_Rwq7BCU/viewform?entry.880967945=' + participationId;
+  }
+</script>
+</body>
+</html>
